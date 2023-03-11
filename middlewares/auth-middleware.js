@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
 
       const { userId } = jwt.verify(token, "customized-secret-key");
 
-      const user = await Users.findOne({ userId });
+      const user = await Users.findOne({ where : {userId} }); // sequelize 사용할 때에는 where 절을 사용할 것
       res.locals.user = user;
       next();
 

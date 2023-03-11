@@ -84,11 +84,11 @@ router.put("/posts/:postId", authMiddleware, async(req, res) => {
         const user = res.locals.user; // 토큰을 검사하여, 유효한 토큰일 경우에만 게시글 작성 가능
         // 게시글을 조회합니다.
         const updateData = await Posts.findOne({ where: { postId } });
-        console.log(updateData.nickname, user.nickname);
-        // 데이터 형식이 올바르지 않음
+
+        // 게시글이 존재하지 않는 경우
         if (!updateData) {
             res.status(412).json({
-                errorMessage: "데이터 형식이 올바르지 않습니다."
+                errorMessage: "게시글이 존재하지 않습니다."
             });
             return;
         }
@@ -107,7 +107,7 @@ router.put("/posts/:postId", authMiddleware, async(req, res) => {
             return;
         }
         // 로그인한 회원의 닉네임과 해당 게시글 작성한 닉네임이 다른 경우
-        if (updateData.nickname !== user.nickname)  {
+        if (updateData.userId !== user.userId)  {
             res.status(403).json({
                 errorMessage: "게시글 수정의 권한이 존재하지 않습니다."
             });

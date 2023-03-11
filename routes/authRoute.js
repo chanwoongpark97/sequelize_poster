@@ -10,6 +10,7 @@ router.post("/", async (req, res) => {
 
         // 닉네임이 일치하는 유저를 찾는다.
         const user = await Users.findOne({ where: { nickname: nickname } });
+        console.log(user.userId);
 
         // NOTE: 인증 메세지는 자세히 설명하지 않는것을 원칙으로 한다.
         // 1. 이메일에 일치하는 유저가 존재하지 않거나
