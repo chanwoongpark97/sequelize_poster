@@ -1,3 +1,13 @@
 # sequelize_poster
 
-lv3 과제 부분까지 완료
+lv3 과제 완료 (2023.3.8~11)
+lv4 과제 완료 (2023.3.11~14)
+
+sequelize와 mysql 데이터베이스를 이용해서 만든 게시판 프로젝트
+
+구현 한 것
+- 회원가입 API(user) 
+- 로그인 API(auth) 
+- 게시글 생성, 전체 조회, 상세 조회, 수정, 삭제 API(post)
+- 댓글 생성, 조회, 수정, 삭제 API(comment)
+- 게시글 좋아요 수정, 조회 API(like)
