@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const router = express.Router();
 const { Users } = require("../models");
 const jwt = require("jsonwebtoken");
@@ -23,7 +24,7 @@ router.post("/", async (req, res) => {
         }
 
         // JWT를 생성
-        const token = jwt.sign({ userId: user.userId }, "customized-secret-key");
+        const token = jwt.sign({ userId: user.userId }, process.env.PRIVATE_KEY);
     
         res.cookie("Authorization", `Bearer ${token}`); // JWT를 Cookie로 할당합니다!
         res.status(200).json({ token }); // JWT를 Body로 할당합니다!
